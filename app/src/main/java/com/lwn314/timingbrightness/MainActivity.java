@@ -1,9 +1,11 @@
 package com.lwn314.timingbrightness;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -68,6 +70,8 @@ public class MainActivity extends Activity {
                 timeList.setAdapter(adapter);
                 add.setVisibility(View.GONE);
                 delete.setVisibility(View.VISIBLE);
+                slideOutAnim(add);
+                slideInAnim(delete);
                 return true;
             }
         });
@@ -93,6 +97,8 @@ public class MainActivity extends Activity {
                 isLongClicked = false;
                 delete.setVisibility(View.GONE);
                 add.setVisibility(View.VISIBLE);
+                slideOutAnim(delete);
+                slideInAnim(add);
                 for (int id : deleteList) {
                     Intent cancelIntent = new Intent(MainActivity.this, AlarmReceiver.class);
                     cancelIntent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
@@ -103,6 +109,8 @@ public class MainActivity extends Activity {
                 refresh();
             }
         });
+
+        slideInAnim(add);
 
         ActivityCollector.addActivity(this);
     }
@@ -121,5 +129,19 @@ public class MainActivity extends Activity {
         } else {
             finish();
         }
+    }
+
+    public void slideInAnim(Object target) {
+        ObjectAnimator slideIn = ObjectAnimator.ofFloat(target, "translationY", 500f, 0f);
+        slideIn.setDuration(1000);
+        slideIn.setInterpolator(new AnticipateOvershootInterpolator());
+        slideIn.start();
+    }
+
+    public void slideOutAnim(Object target) {
+        ObjectAnimator slideIn = ObjectAnimator.ofFloat(target, "translationY", 0f, 500f);
+        slideIn.setDuration(1000);
+        slideIn.setInterpolator(new AnticipateOvershootInterpolator());
+        slideIn.start();
     }
 }

@@ -22,12 +22,14 @@
         android:id="@+id/repeat_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
     <SeekBar
         android:id="@+id/seekBar_item"
         android:layout_marginLeft="100dp"
         android:layout_centerVertical="true"
         android:layout_width="200dp"
         android:layout_height="wrap_content"/>
+
     <Switch
         android:paddingRight="10dp"
         android:layout_centerVertical="true"

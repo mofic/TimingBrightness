@@ -127,6 +127,8 @@ public class PickerActivity extends Activity implements View.OnClickListener {
                 }
                 Intent intent = new Intent(PickerActivity.this, MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim
+                        .slide_out_right);
                 ActivityCollector.finishAll();
                 finish();
                 break;

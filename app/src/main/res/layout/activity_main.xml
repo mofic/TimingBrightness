@@ -12,21 +12,21 @@
     </ListView>
 
     <Button
-        android:paddingBottom="20dp"
         android:id="@+id/add"
-        android:text="Add"
+        android:background="@mipmap/add"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:paddingBottom="20dp"
-        android:text="Delete"
+        android:layout_marginBottom="20dp"
+        android:background="@mipmap/delete"
         android:id="@+id/delete_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
 </RelativeLayout>
